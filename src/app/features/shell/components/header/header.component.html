@@ -1,1 +1,48 @@
-<p>header works!</p>
+<header
+    class="sticky top-0 z-50 bg-secondary backdrop-blur-md border-b border-black/10 px-6 py-4 flex items-center justify-between text-black transition-all duration-300"
+    [class.py-2]="isScrolled()">
+    <div class="flex items-center gap-2">
+        <img [src]="isScrolled() ? 'assets/images/Monograma.png' : 'assets/images/logo.png'" alt="McManus Logo"
+            class="h-12 md:h-16 w-auto object-contain cursor-pointer transition-all duration-300">
+    </div>
+
+    <nav class="hidden md:flex items-center gap-8">
+        <a href="#" class="nav-link active">HOME</a>
+        <a href="#" class="nav-link">ACERCA DE MI</a>
+        <a href="#" class="nav-link">CALCULADORA</a>
+        <a href="#" class="nav-link">CONTACTO</a>
+        <a href="#" class="nav-link">FAQ</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+        <a href="https://www.instagram.com/..."
+            class="hidden sm:inline-block bg-plum text-white px-6 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] rounded-sm hover:scale-105 transition-transform shadow-lg shadow-black/20">
+            Empieza Hoy
+        </a>
+
+        <button (click)="toggleMenu()" class="md:hidden p-2 text-black focus:outline-none" aria-label="Toggle menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                @if (!isMenuOpen()) {
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                } @else {
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                }
+            </svg>
+        </button>
+    </div>
+
+    @if (isMenuOpen()) {
+    <div
+        class="absolute top-full left-0 w-full bg-secondary border-b border-black/10 flex flex-col p-6 space-y-4 md:hidden animate-fade-in-down">
+        <a href="#" (click)="toggleMenu()" class="mobile-nav-link">HOME</a>
+        <a href="#" (click)="toggleMenu()" class="mobile-nav-link">ACERCA DE MI</a>
+        <a href="#" (click)="toggleMenu()" class="mobile-nav-link">CALCULADORA</a>
+        <a href="#" (click)="toggleMenu()" class="mobile-nav-link">CONTACTO</a>
+        <a href="#" (click)="toggleMenu()" class="mobile-nav-link">FAQ</a>
+        <a href="https://www.instagram.com/..."
+            class="bg-plum text-white py-3 text-center rounded-sm font-bold uppercase tracking-widest text-[10px]">
+            Empieza Hoy
+        </a>
+    </div>
+    }
+</header>

@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap');
+
+@theme {
+    --color-primary: #FF582D;
+    --color-secondary: #F5EA7A;
+    --color-accent: #B7B74B;
+    --color-light-blue: #d9eeef;
+    --color-plum: #490839;
+
+    --font-sans: "Neue Haas Unica", ui-sans-serif, system-ui;
+    --font-display: "Playfair Display", serif;
+}
+
+/* --- Estilos personalizados para el Header --- */
+
+@utility nav-link {
+    @apply text-[11px] font-bold uppercase tracking-[0.2em] text-black/70 hover:text-black transition-colors pb-1 border-b-2 border-transparent;
+}
+
+@utility nav-link-active {
+    @apply text-black border-black/20;
+}
+
+@utility mobile-nav-link {
+    @apply text-[12px] font-bold uppercase tracking-[0.2em] text-black/80 py-4 border-b border-black/5 w-full text-center;
+}
+
+/* Animación de entrada para el menú móvil */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@utility animate-menu-entry {
+    animation: slideDown 0.3s ease-out forwards;
+}
